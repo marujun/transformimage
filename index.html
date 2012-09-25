@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Transformimage.github.com : 使用 transform进行div翻转图片或文字" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Transformimage.github.com</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/marujun/transformimage.github.com">View on GitHub</a>
+
+          <h1 id="project_title">Transformimage.github.com</h1>
+          <h2 id="project_tagline">使用 transform进行div翻转图片或文字</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/marujun/transformimage.github.com/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/marujun/transformimage.github.com/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>让元素支持3D变换需要的2个属性：perspective、transform-style</p>
+
+<p>perspective(透视)：该属性会设置查看者的位置，并将可视内容映射到一个视锥上，继而投影到一个 2D 视平面上。如果不指定透视，则 Z 空间中的所有点将平铺到同一个 2D 视平面中，并且变换结果中将不存在景深概念。简单一点理解就是，perspective的值模拟的是用户观看动画时与动画中心面的焦距，值越小，看到的效果越明显()，越大，动画效果越不明显。当perspective为0的时候，感觉就像是你的眼睛紧贴着动画中心面看到的效果(看到的是平面动画)</p>
+
+<p>transform-style(变换模式)：preserve-3d
+ dom结构如下：</p>
+
+<p><code>&lt;div class="p" id="p" onclick="show();"&gt;
+    &lt;div class="a"&gt;&lt;img src="images/YHY010.jpg" class="image"&gt;&lt;/div&gt;
+    &lt;div class="b"&gt;&lt;img src="images/YHY011.jpg" class="image"&gt;&lt;/div&gt;
+&lt;/div&gt;</code>
+希望达到的效果是默认情况下，正面显示图片1，反面显示图片2，并且反面不可见。翻转180°后，图片2变为可见，图片1不可见，整个翻转的过程中，对于默认情况：</p>
+
+<p>因为要做翻转，所以首先我们需要让a、b重合(绝对定位)，然后将b翻转180°，与a背靠背，这样同时翻转180°的时候，能始终保持一张图片可见。代码如下：</p>
+
+<p><code>.p {-webkit-perspective:700;-webkit-transform-style: preserve-3d;}</code>
+<code>.a {-webkit-transform:rotateY(0deg);}
+.b {-webkit-transform: rotateY(-180deg);}</code></p>
+
+<p>翻转时，让a、b同时顺时针翻转180°，代码如下：</p>
+
+<p><code>.act .a {-webkit-transform:rotateY(180deg);}
+.act .b {-webkit-transform:rotateY(0deg);}</code></p>
+
+<p>最后，设置a、b翻转动画时间，翻转圆点，以及设置翻转180°后背面是否可见，代码如下：</p>
+
+<p><code>.a, .b {
+           -webkit-transition:1.5s;
+           -webkit-transform-origin: 50% 0;
+           -webkit-backface-visibility:hidden;
+        }</code></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Transformimage.github.com maintained by <a href="https://github.com/marujun">marujun</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
