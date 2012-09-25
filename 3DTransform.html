@@ -1,0 +1,85 @@
+<!--详细属性参考：http://css-infos.net/property/-webkit-animation-->
+
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>CSS3 实现的3D动画效果</title>
+    <style type="text/css">
+        .out_box{width:500px; height:300px; margin:100px auto 0; overflow:hidden;}
+        .out_box img{float:left;}
+        #animate_3d{
+            -webkit-perspective:600;
+            -webkit-transform-style:preserve-3d;
+            -webkit-animation-name:x-spin;/*animation-name属性中指定关键帧集合的名称*/
+            -webkit-animation-duration:7s;/*animation-duration属性中指定完成动画所用的时间*/
+            -webkit-animation-iteration-count:infinite;/*animation-iteration-count属性来制定动画的播放次数*/
+            -webkit-animation-timing-function:linear;/*animation-timing-function属性中指定实现动画的方法*/
+        }
+        .img_3d{width: 100px;height: 75px;}
+        .img_3d,.line_3d{
+            -webkit-transform-style:preserve-3d;
+            -webkit-animation-iteration-count:infinite;
+            -webkit-animation-timing-function:linear;
+        }
+        #animate_line_1{
+            -webkit-animation-name:y-spin;
+            -webkit-animation-duration:5s;
+        }
+        #animate_line_2{
+            -webkit-animation-name:back-y-spin;
+            -webkit-animation-duration:4s;
+        }
+
+        #animate_line_3{
+            -webkit-animation-name:y-spin;
+            -webkit-animation-duration:3s;
+        }
+/*创建关键帧的方法是：@keyframes /关键帧集合名/ { 创建关键帧的代码 }
+  如果是Safari或Chrome，要在属性前加上“-webkit-”前缀，如果是Firefox，则加上“-moz-”前缀
+　创建关键帧的代码类似这样：40% { 本关键帧的样式代码 },关键帧可以在0%-100%之间任意设置
+*/
+        @-webkit-keyframes x-spin {
+	0%    { -webkit-transform:rotateX(0deg); }
+	50%   { -webkit-transform:rotateX(180deg); }
+	100%  { -webkit-transform:rotateX(360deg); }
+}
+        @-webkit-keyframes y-spin {
+	0%    { -webkit-transform:rotateY(0deg); }
+	50%   { -webkit-transform:rotateY(180deg); }
+	100%  { -webkit-transform:rotateY(360deg); }
+}
+
+        @-webkit-keyframes back-y-spin {
+	0%    { -webkit-transform:rotateY(360deg); }
+	50%   { -webkit-transform:rotateY(180deg); }
+	100%  { -webkit-transform:rotateY(0deg); }
+}
+    </style>
+</head>
+
+<body>
+<div id="animate_3d" class="out_box">
+    <div id="animate_line_1" class="line_3d">
+        <img class="img_3d" src="images/YHY001.jpg" />
+        <img class="img_3d" src="images/YHY002.jpg" />
+        <img class="img_3d" src="images/YHY003.jpg" />
+        <img class="img_3d" src="images/YHY004.jpg" />
+        <img class="img_3d" src="images/YHY005.jpg" />
+    </div>
+    <div id="animate_line_2" class="line_3d">
+        <img class="img_3d" src="images/YHY006.jpg" />
+        <img class="img_3d" src="images/YHY007.jpg" />
+        <img class="img_3d" src="images/YHY008.jpg" />
+        <img class="img_3d" src="images/YHY009.jpg" />
+        <img class="img_3d" src="images/YHY010.jpg" />
+    </div>
+    <div id="animate_line_3" class="line_3d">
+        <img class="img_3d" src="images/YHY011.jpg" />
+        <img class="img_3d" src="images/YHY012.jpg" />
+        <img class="img_3d" src="images/YHY013.jpg" />
+        <img class="img_3d" src="images/YHY014.jpg" />
+        <img class="img_3d" src="images/YHY015.jpg" />
+    </div>
+</div>
+</body>
+</html>
