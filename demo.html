@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC >
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="javascripts/jquery-1.7.1.min.js"></script>
+    <title>Flip Text</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        #cover{
+            position:absolute;
+            width:100%;
+            height:100%;
+            min-width: 768px;
+            overflow: hidden;
+            background: -webkit-gradient(linear,left top, left bottom, color-stop(0, #00BDF2),color-stop(1, #003D7B));
+            background: -moz-linear-gradient(top,#00BDF2, #003D7B);
+        }
+        #coverText {
+            position: absolute;
+            left: 18%;
+            top: 30%;
+            width:64%;
+            text-align:center;
+        }
+        #welcomeStr1,#welcomeStr2 {
+            height: 86px;
+            font-size: 64px;
+            line-height: 86px;
+            letter-spacing: 2px;
+            color: white;
+            font-family:"Courier New";
+            -webkit-animation-time-function: linear;
+        }
+
+        @-webkit-keyframes flip {
+    0% {
+        -webkit-transform: rotateY(0deg) scale(1,1);
+        color: white;
+    }
+    70% {
+        -webkit-transform: rotateY(0deg) scale(1,1);
+        color: white;
+    }
+    100% {
+        -webkit-transform: rotateY(90deg) scale(1,1);
+        color: white;
+    }
+}
+        @-webkit-keyframes unflip {
+    0% {
+        -webkit-transform: rotateY(90deg) scale(1,1);
+        color: white;
+    }
+    /*70% {*/
+        /*-webkit-transform: rotateY(45deg) scale(1,1);*/
+        /*color: white;*/
+    /*}*/
+    100% {
+        -webkit-transform: rotateY(0deg) scale(1,1);
+        color: white;
+    }
+}
+    </style>
+    <script type="text/javascript">
+        flip = function(element, flipName, flipTime, unflipName, unflipTime) {
+            if(!element){
+                return;
+            }
+            element.style.webkitAnimation = "" + flipName + " " + flipTime;
+            return $(element).bind('webkitAnimationEnd', function() {
+                switch (element.style.webkitAnimationName) {
+                    case flipName:
+                        return element.style.webkitAnimation = "" + unflipName + " " + unflipTime;break;
+                    case unflipName:
+                        return element.style.webkitAnimation = "" + flipName + " " + flipTime;break;
+                }
+            });
+        };
+
+        $(function() {
+            flip($("#welcomeStr1")[0], 'flip', '2s', 'unflip', '2s');
+            flip($("#welcomeStr2")[0], 'flip', '2s', 'unflip', '2s');
+        });
+    </script>
+</head>
+<body>
+<div id="cover">
+    <div id="coverText">
+        <div id="welcomeStr1">Welcome To HTML5!</div>
+        <div id="welcomeStr2">Hello World!</div>
+    </div>
+</div>
+</body>
