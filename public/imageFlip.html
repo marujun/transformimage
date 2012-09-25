@@ -16,16 +16,16 @@
         .p {
             position: relative;
             margin: 100px auto 0;
-            width: 400px;
-            height: 300px;
-            -webkit-perspective: 500px;
-            -webkit-transform-style: preserve-3d;
+            width: 300px;
+            height: 150px;
+            -webkit-perspective: 500px;/*用来调节透视*/
+            -webkit-transform-style: preserve-3d;/*3D还是2D*/
         }
 
         .a, .b {
-            -webkit-transition: 3s;
+            -webkit-transition: 3s;/*变换时间*/
             -webkit-transform-style: preserve-3d;
-            -webkit-transform-origin: 50% 50%;
+            -webkit-transform-origin: 50% 50%;/*变换时的中心轴*/
             -webkit-backface-visibility: hidden;
             position: absolute;
             top: 0;
@@ -36,9 +36,8 @@
         }
 
         .a {
-            -webkit-transform: rotateX(0deg);
+            -webkit-transform: rotateX(0deg);/*选择围绕X轴进行旋转*/
         }
-
         .b {
             -webkit-transform: rotateX(180deg);
         }
