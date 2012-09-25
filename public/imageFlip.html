@@ -2,38 +2,61 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <script type="text/javascript" src="javascripts/jquery-1.7.1.min.js"></script>
     <title>css3 div 图片翻转</title>
     <style>
-        body {font-size:100px;color:#FFF;}
-        .image{width:300px;height: 150px}
-        .p {position:relative;margin:100px auto 0;width:300px;height:150px;}
-        .a, .b {position:absolute;top:0;left:0;width:300px;height:150px;background-color: #000; }
-        /*.p {-webkit-perspective:0;-webkit-transform-style: preserve-3d;}*/
-        .a, .b {
-            -webkit-transition:1.5s;
-            -webkit-transform-origin: 50% 0;
-            -webkit-backface-visibility:hidden;
+        body {
+            font-size: 100px;
+            color: #FFF;
         }
-        .a {-webkit-transform:rotateY(0deg);}
-        .b {-webkit-transform: rotateY(-180deg);}
-        .act .a {-webkit-transform:rotateY(180deg);}
-        .act .b {-webkit-transform:rotateY(0deg);}
+        .image {
+            width: 300px;
+            height: 150px
+        }
+        .p {
+            position: relative;
+            margin: 100px auto 0;
+            width: 400px;
+            height: 300px;
+            -webkit-perspective: 500px;
+            -webkit-transform-style: preserve-3d;
+        }
+
+        .a, .b {
+            -webkit-transition: 3s;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transform-origin: 50% 50%;
+            -webkit-backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 150px;
+            background-color: #000;
+        }
+
+        .a {
+            -webkit-transform: rotateX(0deg);
+        }
+
+        .b {
+            -webkit-transform: rotateX(180deg);
+        }
     </style>
 </head>
-<body >
+<body>
 <div class="p" id="p" onclick="show();">
-    <div class="a"><img src="images/YHY010.jpg" class="image"></div>
-    <div class="b"><img src="images/YHY011.jpg" class="image"></div>
+    <div class="a" id="div1"><img src="images/4.jpg" class="image"></div>
+    <div class="b" id="div2"><img src="images/5.jpg" class="image"></div>
 </div>
 <script>
-    var p = document.getElementById('p');
-    var show = function(){
-        if(p.className == 'p'){
-            p.className = 'p act'
-        }else{
-            p.className = 'p';
-        }
-    }
+    var a = 0, b = 180;
+    var show = function () {
+        a += 180;
+        b += 180;
+        $("#div1").css({'-webkit-transform':'rotateX(' + a + 'deg)'});
+        $("#div2").css({'-webkit-transform':'rotateX(' + b + 'deg)'});
+    };
 </script>
 </body>
 </html>
