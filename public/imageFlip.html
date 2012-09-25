@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>css3 div 图片翻转</title>
+    <style>
+        body {font-size:100px;color:#FFF;}
+        .image{width:300px;height: 150px}
+        .p {position:relative;margin:100px auto 0;width:300px;height:150px;}
+        .a, .b {position:absolute;top:0;left:0;width:300px;height:150px;background-color: #000; }
+        /*.p {-webkit-perspective:0;-webkit-transform-style: preserve-3d;}*/
+        .a, .b {
+            -webkit-transition:1.5s;
+            -webkit-transform-origin: 50% 0;
+            -webkit-backface-visibility:hidden;
+        }
+        .a {-webkit-transform:rotateY(0deg);}
+        .b {-webkit-transform: rotateY(-180deg);}
+        .act .a {-webkit-transform:rotateY(180deg);}
+        .act .b {-webkit-transform:rotateY(0deg);}
+    </style>
+</head>
+<body >
+<div class="p" id="p" onclick="show();">
+    <div class="a"><img src="images/YHY010.jpg" class="image"></div>
+    <div class="b"><img src="images/YHY011.jpg" class="image"></div>
+</div>
+<script>
+    var p = document.getElementById('p');
+    var show = function(){
+        if(p.className == 'p'){
+            p.className = 'p act'
+        }else{
+            p.className = 'p';
+        }
+    }
+</script>
+</body>
+</html>
