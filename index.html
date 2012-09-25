@@ -10,20 +10,20 @@
         .a, .b {position:absolute;top:0;left:0;width:300px;height:150px;background-color: #000; }
             /*.p {-webkit-perspective:0;-webkit-transform-style: preserve-3d;}*/
         .a, .b {
-            -webkit-transition:1.5s;
+            -webkit-transition:5s;
             -webkit-transform-origin: 50% 0;
             -webkit-backface-visibility:hidden;
         }
-        .a {-webkit-transform:rotateY(0deg);}
-        .b {-webkit-transform: rotateY(-180deg);}
-        .act .a {-webkit-transform:rotateY(180deg);}
-        .act .b {-webkit-transform:rotateY(0deg);}
+        .a {-webkit-transform:rotateX(0deg);}
+        .b {-webkit-transform: rotateX(-180deg);}
+        .act .a {-webkit-transform:rotateX(180deg);}
+        .act .b {-webkit-transform:rotateX(0deg);}
     </style>
 </head>
 <body >
 <div class="p" id="p" onclick="show();">
-    <div class="a"><img src="images/YHY010.jpg" class="image"></div>
-    <div class="b"><img src="images/YHY011.jpg" class="image"></div>
+    <div class="a"><img src="images/4.jpg" class="image"></div>
+    <div class="b"><img src="images/5.jpg" class="image"></div>
 </div>
 <script>
     var p = document.getElementById('p');
